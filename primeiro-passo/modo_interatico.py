@@ -25,5 +25,4 @@ módulo, função, classe, método ou variável
 help() - entra dentro da biblioteca que você pode pesquisar oque estive com duvida
 
 help(100) - ja mostra as informções de acordo com o tipo do parâmetro passado
-
  """
