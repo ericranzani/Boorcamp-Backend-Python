@@ -42,12 +42,30 @@ def inserir_muitos(connect, cursor, dados):
     connect.commit()
 
 
+# recuperar cliente
+def recuperar_cliente(cursos, id):
+    cursor.execute("SELECT * FROM clientes WHERE id=?", (id,))
+    return cursor.fetchone()
+
+
+def listar_cliente(cursor):
+    return cursor.execute("SELECT * FROM clientes ORDER BY nome;")
+
+
+cliente = recuperar_cliente(cursor, 3)
+print(cliente)
+
+clientes = listar_cliente(cursor)
+for cliente in clientes:
+    print(cliente)
+
+
 # atualizar_registro(connect, cursor, "angelica", "angelica@gmail.com", id)
 # inserir_registro(connect, cursor, "outro", "outro@gmail.com")
 # excluir_registro(connect, cursor, 2)
-dados = [
-    ("teste1", "teste1@gmail.com"),
-    ("teste2", "teste2@gmail.com"),
-    ("teste3", "teste3@gmail.com"),
-]
-inserir_muitos(connect, cursor, dados)
+# dados = [
+#     ("teste1", "teste1@gmail.com"),
+#     ("teste2", "teste2@gmail.com"),
+#     ("teste3", "teste3@gmail.com"),
+# ]
+# inserir_muitos(connect, cursor, dados)
