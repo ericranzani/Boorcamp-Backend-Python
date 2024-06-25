@@ -36,6 +36,18 @@ def excluir_registro(connect, cursor, id):
     connect.commit()
 
 
+# inserir varios registros
+def inserir_muitos(connect, cursor, dados):
+    cursor.executemany("INSERT INTO clientes (nome, email) VALUES (?,?);", dados)
+    connect.commit()
+
+
 # atualizar_registro(connect, cursor, "angelica", "angelica@gmail.com", id)
 # inserir_registro(connect, cursor, "outro", "outro@gmail.com")
-excluir_registro(connect, cursor, 2)
+# excluir_registro(connect, cursor, 2)
+dados = [
+    ("teste1", "teste1@gmail.com"),
+    ("teste2", "teste2@gmail.com"),
+    ("teste3", "teste3@gmail.com"),
+]
+inserir_muitos(connect, cursor, dados)
