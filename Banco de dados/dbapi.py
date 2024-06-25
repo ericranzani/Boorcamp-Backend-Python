@@ -29,4 +29,13 @@ def atualizar_registro(connect, cursor, nome, email, id):
     connect.commit()
 
 
-atualizar_registro(connect, cursor, "Angelica", "angelica@gmail.com", 1)
+# deletando os dados em cada campo da tabela
+def excluir_registro(connect, cursor, id):
+    data = (id,)
+    cursor.execute("DELETE FROM clientes WHERE id=?;", data)
+    connect.commit()
+
+
+# atualizar_registro(connect, cursor, "angelica", "angelica@gmail.com", id)
+# inserir_registro(connect, cursor, "outro", "outro@gmail.com")
+excluir_registro(connect, cursor, 2)
