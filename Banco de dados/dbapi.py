@@ -5,6 +5,7 @@ ROOT_PATH = Path(__file__).parent
 
 connect = sqlite3.connect(ROOT_PATH / "meu_banco.db")
 cursor = connect.cursor()
+cursor.row_factory = sqlite3.Row
 
 
 # criando a tabel e seus campos
@@ -48,16 +49,18 @@ def recuperar_cliente(cursos, id):
     return cursor.fetchone()
 
 
-def listar_cliente(cursor):
+def listar_clientes(cursor):
     return cursor.execute("SELECT * FROM clientes ORDER BY nome;")
 
 
-cliente = recuperar_cliente(cursor, 3)
-print(cliente)
-
-clientes = listar_cliente(cursor)
+clientes = listar_clientes(cursor)
 for cliente in clientes:
-    print(cliente)
+    print(dict(cliente))
+
+cliente = recuperar_cliente(cursor, 1)
+print(dict(cliente))
+print(cliente["id"], cliente["nome"], cliente["email"])
+print(f'Seja bem vindo ao sistema {cliente["nome"]}')
 
 
 # atualizar_registro(connect, cursor, "angelica", "angelica@gmail.com", id)
